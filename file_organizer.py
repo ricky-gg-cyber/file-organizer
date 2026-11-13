@@ -12,11 +12,11 @@ def put_in_dir(file:Path,new_dir_path:Path):
     return file.rename(new_dir_path/file.name)
 if len(sys.argv)<2:
     print('Error: Please provide a directory path as an argument.')
-    exit()
+    sys.exit(1)
 p=Path(sys.argv[1])
 if not p.is_dir():
     print('Error, the path given is not a directory.')
-    exit()
+    sys.exit(1)
 for file in list(p.iterdir()):
     if file.is_file():
         if file.name[0]=='.':
