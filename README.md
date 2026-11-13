@@ -9,7 +9,7 @@ A command-line tool that sorts the files in a folder into subfolders by extensio
 - `--dry-run` mode to preview changes without moving anything
 
 ## Requirements
-- Python 3.x (no external packages)
+- Python 3.6 or newer (no external packages)
 
 ## Installation
 ```bash
