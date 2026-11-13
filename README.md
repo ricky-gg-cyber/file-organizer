@@ -28,13 +28,16 @@ Before:
 ```
 folder/
   a.txt
-  photo.jpg
+  photo.JPG
+  b.txt
+  notes
 ```
 After:
 ```
 folder/
-  txt/a.txt
+  txt/a.txt,b.txt
   jpg/photo.jpg
+  Others/notes
 ```
 
 ## Notes
