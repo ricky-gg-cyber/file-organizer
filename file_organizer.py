@@ -10,29 +10,27 @@ def put_in_dir(file:Path,new_dir_path:Path,dry_run:bool):
             i+=1
             k=new_dir_path/f'{file.stem}_{i}{file.suffix}'
         if dry_run:
-            print(file.name,'-->',new_dir_path.name,'/',f'{file.stem}_{i}{file.suffix}')
+            print(f'{file.name} --> {new_dir_path.name}/{file.stem}_{i}{file.suffix}')
         else:
-            print('The file:',file.name,'already existed so it has been renamed:',f'{file.stem}_{i}{file.suffix}')
+            print(f'The file: {file.name} already existed so it has been renamed: {file.stem}_{i}{file.suffix}')
             return file.rename(k)
     else:
         if dry_run:
-            print(file.name,'-->',new_dir_path.name,'/',file.name) 
+            print(f'{file.name} --> {new_dir_path.name}/{file.name}') 
         else:
             return file.rename(new_dir_path/file.name)
 
 parser=argparse.ArgumentParser()
-parser.add_argument('path',type=str,help='The path of the folder you want to organize')
-parser.add_argument('--dry_run',help='Shows what changes would the program applies if it was ran',action='store_true')
+parser.add_argument('path',help='The path of the folder you want to organize')
+parser.add_argument('--dry-run',help='Show what would be moved without moving anything',action='store_true')
 args=parser.parse_args()
 p=Path(args.path)
 if not p.is_dir():
     print('Error, the path given is not a directory.')
     sys.exit(1)
-    exit()
 if args.dry_run:
     dry_run=True
     for file in list(p.iterdir()):
-        i=1
         if file.is_file():
             if file.name[0]=='.':
                 continue
