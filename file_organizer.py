@@ -11,7 +11,7 @@ def put_in_dir(file:Path,new_dir_path:Path):
     return file.rename(new_dir_path/file.name)
 p=Path(input('Enter the path of the folder you want to organize the files: '))
 if not p.is_dir():
-    print('Errore, the path given is not a directory.')
+    print('Error, the path given is not a directory.')
     exit()
 for file in list(p.iterdir()):
     if file.is_file():
