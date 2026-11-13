@@ -1,4 +1,5 @@
 from pathlib import Path
+import sys
 def put_in_dir(file:Path,new_dir_path:Path):
     i=1
     if (new_dir_path/file.name).exists()==True:
@@ -9,7 +10,10 @@ def put_in_dir(file:Path,new_dir_path:Path):
         print('The file:',file.name,'already existed so it has been renamed:',f'{file.stem}_{i}{file.suffix}')
         return file.rename(k)
     return file.rename(new_dir_path/file.name)
-p=Path(input('Enter the path of the folder you want to organize the files: '))
+if len(sys.argv)<2:
+    print('Error: Please provide a directory path as an argument.')
+    exit()
+p=Path(sys.argv[1])
 if not p.is_dir():
     print('Error, the path given is not a directory.')
     exit()
